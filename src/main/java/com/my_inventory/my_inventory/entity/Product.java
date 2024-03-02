@@ -1,9 +1,6 @@
 package com.my_inventory.my_inventory.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,9 +14,13 @@ public class Product {
     @Id
     @GeneratedValue
     private int id;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "inventory_id", referencedColumnName = "id")
+    private Inventory inventory;
     private String name;
     private double price;
-
     private int quantity;
-
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
 }

@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Data
 @AllArgsConstructor
@@ -17,6 +20,8 @@ public class Inventory {
     @GeneratedValue
     private int id;
 
+    @OneToMany(mappedBy = "inventory")
+    private Set<Product> products = new HashSet<>();
     private String name;
     public String getName(){
         return name;
@@ -31,4 +36,11 @@ public class Inventory {
         this.id = id;
         return id;
     }
+    public Set<Product> getProducts() {
+        return products;
+    }
+    public void addProduct(Product product){
+        products.add(product);
+    }
+
 }
