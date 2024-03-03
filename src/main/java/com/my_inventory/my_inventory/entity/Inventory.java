@@ -19,28 +19,12 @@ public class Inventory {
     @Id
     @GeneratedValue
     private int id;
-
-    @OneToMany(mappedBy = "inventory")
-    private Set<Product> products = new HashSet<>();
     private String name;
     public String getName(){
         return name;
     }
-
-
     public int getId() {
         return id;
-    }
-
-    public int setId(int id){
-        this.id = id;
-        return id;
-    }
-    public Set<Product> getProducts() {
-        return products;
-    }
-    public void addProduct(Product product){
-        products.add(product);
     }
 
 }
